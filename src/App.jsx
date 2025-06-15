@@ -224,7 +224,7 @@ export default function App() {
           </Typography>
         </Box>
 
-        {/* Current Position */}
+        {/* Current Position  */}
         <Box sx={{ marginBottom: '60px' }}>
           <SectionTitle themeMode={themeMode}>current</SectionTitle>
           <Typography sx={{ fontSize: '18px', color: themeMode === 'light' ? '#000' : '#fff' }}>
