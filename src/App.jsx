@@ -4,7 +4,8 @@ import {
   Typography, 
   Link, 
   Avatar, 
-  IconButton
+  IconButton,
+  useMediaQuery
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import NeonCursor from './NeonCursor';
@@ -98,11 +99,34 @@ const DescriptionText = styled(Typography)(({ themeMode }) => ({
   width: '100%',
 }));
 
+const MobileMessage = styled(Box)({
+  minHeight: '100vh',
+  backgroundColor: '#121212',
+  color: '#fff',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  padding: '20px',
+  textAlign: 'center',
+  fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif',
+});
+
 export default function App() {
   const diveDeeperRef = useRef(null);
   const contentTopRef = useRef(null);
   const [activeSection, setActiveSection] = useState('work');
   const [themeMode, setThemeMode] = useState('dark');
+  const isMobile = useMediaQuery('(max-width:768px)');
+
+  if (isMobile) {
+    return (
+      <MobileMessage>
+        <Typography variant="h5" sx={{ maxWidth: '400px' }}>
+          This website is best viewed on desktop. Please visit on a larger screen for the full experience :)
+        </Typography>
+      </MobileMessage>
+    );
+  }
 
   return (
     <StyledContainer themeMode={themeMode}>
