@@ -81,3 +81,8 @@ button:focus-visible {
   opacity: 0.1;
   pointer-events: none;
 }
+
+/* Custom cursor */
+* {
+  cursor: url('./assets/svg.svg'), auto;
+}
