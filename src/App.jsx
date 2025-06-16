@@ -118,6 +118,22 @@ export default function App() {
   const [themeMode, setThemeMode] = useState('dark');
   const isMobile = useMediaQuery('(max-width:768px)');
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!diveDeeperRef.current || !contentTopRef.current) return;
+      const aboutRect = diveDeeperRef.current.getBoundingClientRect();
+      const workRect = contentTopRef.current.getBoundingClientRect();
+      // If the top of the about section is above the middle of the viewport, set to about
+      if (aboutRect.top < window.innerHeight / 2) {
+        setActiveSection('about');
+      } else {
+        setActiveSection('work');
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   if (isMobile) {
     return (
       <MobileMessage>
@@ -284,7 +300,7 @@ export default function App() {
               <YearLabel themeMode={themeMode}>2023</YearLabel>
               <Box sx={{ flex: 1 }}>
                 <Typography sx={{ fontSize: '18px', marginBottom: '12px', color: themeMode === 'light' ? '#000' : '#fff' }}>
-                  Software Engineer at <UnderlinedLink href="https://www.odaia.com/">ODAIA Inc.</UnderlinedLink>
+                  Software Engineer at <UnderlinedLink href="https://www.odaia.ai/">ODAIA Inc.</UnderlinedLink>
                 </Typography>
                 <DescriptionText themeMode={themeMode}>
                 Improved performance and developer experience by transitioning to a FastAPI-based architecture, 
