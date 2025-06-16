@@ -359,7 +359,7 @@ export default function App() {
                 height: 150,
                 backgroundColor: '#374151'
               }}
-              src="/new-personal-website/profilepic.png"
+              src="/profilepic.png"
               alt="Profile"
             />
 
